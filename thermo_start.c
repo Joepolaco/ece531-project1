@@ -86,16 +86,16 @@ int main(int argc, char *argv[])
         time(&now);
 
         struct tm *local = localtime(&now);
-        hours = local->tm_hour;  /* get hours since midnight (0-23) */
-        minutes = local->tm_min; /* get minutes passed after the hour (0-59) */
-        seconds = local->tm_sec; /* get seconds passed after a minute (0-59) */
+        hours = local->tm_hour;
+        minutes = local->tm_min;
+        seconds = local->tm_sec;
         time_now = (double)hours + (double)minutes/60 + (double)seconds/3600;//current time in fractions//
         snprintf(tm_stmp, sizeof(tm_stmp), "%02d:%02d:%02d", hours, minutes, seconds);
-        if (hours < 12) {    /* before midday */
-           printf("  Time is %02d:%02d:%02d am\n", hours, minutes, seconds);
+        if (hours < 12) {
+           printf("  Time is %02d:%02d:%02d am\n", hours, minutes, seconds);/*print tme before noon*/
         }
-        else {    /* after midday */
-           printf("  Time is %02d:%02d:%02d pm\n", hours-12, minutes, seconds);
+        else {
+           printf("  Time is %02d:%02d:%02d pm\n", hours-12, minutes, seconds);/*print time afternoon*/
         }
 
     return 0;
